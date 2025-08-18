@@ -28,7 +28,7 @@ public class ReservacionService {
         return reservacionRepository.findById(id);
     }
 
-    public Reservacion save(Reservacion reservacion) {
+    public void save(Reservacion reservacion) {
         List<Reservacion> overlapping = reservacionRepository.findOverlappingReservations(
                 reservacion.getEquipo().getCod_equipo(),
                 reservacion.getFecha(),
@@ -40,7 +40,7 @@ public class ReservacionService {
             throw new IllegalArgumentException("Error: Ya existe una reserva en ese horario para el equipo seleccionado.");
         }
 
-        return reservacionRepository.save(reservacion);
+        reservacionRepository.save(reservacion);
     }
 
     public void deleteById(Integer id) {
