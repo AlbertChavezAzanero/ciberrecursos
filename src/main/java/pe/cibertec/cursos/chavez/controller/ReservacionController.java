@@ -1,14 +1,16 @@
 package pe.cibertec.cursos.chavez.controller;
 
+import pe.cibertec.cursos.chavez.dto.ReservaReporteDTO;
 import pe.cibertec.cursos.chavez.entity.Reservacion;
 import pe.cibertec.cursos.chavez.service.ReservacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import pe.cibertec.cursos.chavez.dto.ReservaReporteDTO;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/reservaciones")
@@ -36,10 +38,12 @@ public class ReservacionController {
     @PostMapping
     public ResponseEntity<?> agregarReservacion(@RequestBody Reservacion reservacion) {
         try {
-            Reservacion nuevaReservacion = reservacionService.save(reservacion);
-            return new ResponseEntity<>(nuevaReservacion, HttpStatus.CREATED);
+            reservacionService.save(reservacion);
+            Map<String, String> respuesta = Collections.singletonMap("mensaje", "Reserva creada con éxito ✅");
+            return new ResponseEntity<>(respuesta, HttpStatus.CREATED);
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            Map<String, String> error = Collections.singletonMap("error", e.getMessage());
+            return ResponseEntity.badRequest().body(error);
         }
     }
 
@@ -49,7 +53,6 @@ public class ReservacionController {
         return ResponseEntity.noContent().build();
     }
 
-    // Agrega este método dentro de la clase ReservacionController
     @GetMapping("/reporte")
     public List<ReservaReporteDTO> generarReporte(
             @RequestParam(required = false) String usuario,

@@ -1,14 +1,14 @@
 package pe.cibertec.cursos.chavez.service;
 
+import pe.cibertec.cursos.chavez.dto.ReservaReporteDTO;
 import pe.cibertec.cursos.chavez.entity.Reservacion;
 import pe.cibertec.cursos.chavez.repository.ReservacionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.cibertec.cursos.chavez.dto.ReservaReporteDTO;
-import java.util.stream.Collectors;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ReservacionService {
@@ -47,7 +47,6 @@ public class ReservacionService {
         reservacionRepository.deleteById(id);
     }
 
-    // Agrega este método dentro de la clase ReservacionService
     public List<ReservaReporteDTO> generarReporte(String usuario, Integer codEquipo) {
         List<Reservacion> reservaciones = reservacionRepository.findByFiltros(usuario, codEquipo);
 
