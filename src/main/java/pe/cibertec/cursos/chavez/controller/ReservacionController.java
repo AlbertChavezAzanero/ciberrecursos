@@ -39,7 +39,7 @@ public class ReservacionController {
     public ResponseEntity<?> agregarReservacion(@RequestBody Reservacion reservacion) {
         try {
             reservacionService.save(reservacion);
-            Map<String, String> respuesta = Collections.singletonMap("mensaje", "Reserva creada con éxito ✅");
+            Map<String, String> respuesta = Collections.singletonMap("mensaje", "Reserva creada con éxito ");
             return new ResponseEntity<>(respuesta, HttpStatus.CREATED);
         } catch (IllegalArgumentException e) {
             Map<String, String> error = Collections.singletonMap("error", e.getMessage());
