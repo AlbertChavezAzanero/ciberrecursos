@@ -1,0 +1,69 @@
+los códigos para cada uno que se ven en tu colección de Postman.
+
+
+GET obtenerReservacion
+Método: GET
+
+URL: http://localhost:8080/api/reservaciones/1 (cambia el 1 por el ID que quieras buscar).
+
+GET listarReservaciones
+Método: GET
+
+URL: http://localhost:8080/api/reservaciones
+
+DEL eliminarReservacion
+Método: DELETE
+
+URL: http://localhost:8080/api/reservaciones/1 (cambia el 1 por el ID que quieras borrar).
+
+POST agregarReservacion
+Método: POST
+
+URL: http://localhost:8080/api/reservaciones
+
+Body (raw, JSON):
+
+JSON
+
+{
+    "fecha": "2025-09-15",
+    "hora_inicio": "11:00:00",
+    "hora_fin": "13:00:00",
+    "usuario": "sVargas",
+    "equipo": {
+        "cod_equipo": 7
+    }
+}
+POST Agregar un nuevo equipo
+Método: POST
+
+URL: http://localhost:8080/api/equipos
+
+Body (raw, JSON):
+
+JSON
+
+{
+    "nom_equipo": "Mouse Inalámbrico MX Master",
+    "tipo_equipo": "Periférico",
+    "estado": "Disponible"
+}
+GET Listar todos los equipos
+Método: GET
+
+URL: http://localhost:8080/api/equipos
+
+GET Reporte sin filtros (Pregunta3)
+Método: GET
+
+URL: http://localhost:8080/api/reservaciones/reporte
+
+GET Reporte filtrado por usuario(Pregunta3)
+Método: GET
+
+URL: http://localhost:8080/api/reservaciones/reporte?usuario=jPerez
+
+GET Reporte filtrado por código de equipo(Pregunta3)
+Método: GET
+
+URL: http://localhost:8080/api/reservaciones/reporte?codEquipo=1
