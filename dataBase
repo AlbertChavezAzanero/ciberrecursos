@@ -1,0 +1,17 @@
+CREATE DATABASE IF NOT EXISTS DB2_CHAVEZ;
+USE DB2_CHAVEZ;
+CREATE TABLE equipo (
+    cod_equipo INT PRIMARY KEY AUTO_INCREMENT,
+    nom_equipo VARCHAR(100) NOT NULL,
+    tipo_equipo VARCHAR(50) NOT NULL,
+    estado VARCHAR(20) NOT NULL
+);
+CREATE TABLE reservacion (
+    num_reservacion INT PRIMARY KEY AUTO_INCREMENT,
+    fecha DATE NOT NULL,
+    hora_inicio TIME NOT NULL,
+    hora_fin TIME NOT NULL,
+    usuario VARCHAR(50) NOT NULL,
+    cod_equipo INT,
+    FOREIGN KEY (cod_equipo) REFERENCES equipo(cod_equipo)
+);
